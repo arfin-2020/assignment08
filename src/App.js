@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router, Route, Switch
+} from "react-router-dom";
 import './App.css';
+import Home from './components/Home';
+import MealFinder from "./components/MealFinder";
+import NabBar from './components/NabBar';
+import TeamDetails from "./components/TeamDetails";
+import GoogleAuth from "./components2/GoogleAuth";
+
+
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <NabBar/>
+      <div className="App">
+      <Switch>
+        <Route path exact = "/">
+          <Home/>
+        </Route>
+        <Route path = "/team/:idTeam">
+            <TeamDetails/>
+        </Route>
+        <Route path = "/meal">
+        <MealFinder/>
+        </Route>
+        <Route path = "/googleAuth">
+          <GoogleAuth/>
+        </Route>
+      </Switch>
+      </div>
+    </Router>
   );
 }
 

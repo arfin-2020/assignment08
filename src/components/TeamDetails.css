@@ -1,0 +1,14 @@
+main-container img {
+  height: 300px;
+  position: cover;
+  background: cover;
+  background-position: center;
+}
+.main-container {
+  color: white;
+  background-color: #171717;
+}
+.information-div {
+  background-color: rgb(121, 35, 35);
+  border-radius: 20px;
+}
