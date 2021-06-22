@@ -1,6 +1,18 @@
-import React from "react"
+import React, { useContext } from "react"
+import { Link } from "react-router-dom"
+import { UserContext } from "../App"
 
 const NabBar = () => {
+  const [loggedInUser, setloggedInUser] = useContext(UserContext)
+  // const signOutUser = () => {
+  //   const signOutUser ={
+  //     isSignedIn: false,
+  //     name: '',
+  //     photo: '',
+  //     email: '',
+  // }
+  // setloggedInUser(signOutUser)
+  // }
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,6 +50,11 @@ const NabBar = () => {
               <li class="nav-item">
                 <a class="nav-link" href="/review">Review</a>
               </li>
+             
+              <li className="nav-item">
+              <Link style={{ textDecoration:'none' }} to="/inventory">Inventory</Link>
+            </li>
+            <button onClick={()=>setloggedInUser({})}>signOut</button>
             </ul>
           </div>
         </div>

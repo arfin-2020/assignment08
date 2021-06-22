@@ -8,6 +8,7 @@ import MealFinder from "./components/MealFinder";
 import NabBar from './components/NabBar';
 import TeamDetails from "./components/TeamDetails";
 import GoogleAuth from "./components2/GoogleAuth";
+import Inventory from "./components3/Inventory";
 import LoginForm from "./components3/LoginForm";
 import PrivateRoute from "./components3/PrivateRoute";
 import Review from "./components3/Review";
@@ -46,9 +47,9 @@ function App() {
         <Route path = "/review">
           <Review/>
         </Route>
-        {/* <Route path = "/shipment">
-        <Shipment/>
-        </Route> */}
+        <PrivateRoute path = "/inventory">
+        <Inventory/>
+        </PrivateRoute>
       </Switch>
     </Router>
     </div>

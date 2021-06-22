@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import React, { useContext, useState } from 'react';
+import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../App";
 import firebaseConfig from "../components2/firebase.config";
 
@@ -12,6 +13,9 @@ import firebaseConfig from "../components2/firebase.config";
 
 const LoginForm = () => {
     const [newUser,setNewUser] = useState(false);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
     // const [nowUser, setNowUser] = useState(false);
     const [loggedInUser, setloggedInUser] = useContext(UserContext);
     const [user, setUser] = useState({
@@ -39,6 +43,8 @@ const LoginForm = () => {
                 email: email,
             }
             setUser(isSignedInUser);
+            setloggedInUser(isSignedInUser)
+            history.replace(from);
             // setUser({isSignedIn: true,
             //     name: displayName,
             //     photo: photoURL,
@@ -128,6 +134,7 @@ const LoginForm = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     setloggedInUser(newUserInfo);
+                    history.replace(from);
                     console.log('Sign in userinfo', user);
                     
                 })
