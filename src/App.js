@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
@@ -7,16 +8,22 @@ import MealFinder from "./components/MealFinder";
 import NabBar from './components/NabBar';
 import TeamDetails from "./components/TeamDetails";
 import GoogleAuth from "./components2/GoogleAuth";
+import LoginForm from "./components3/LoginForm";
+import PrivateRoute from "./components3/PrivateRoute";
+import Review from "./components3/Review";
+import Shipment from "./components3/Shipment";
 
 
-
+export const UserContext = createContext()
 
 function App() {
-  
+  const [loggedInUser, setloggedInUser] = useState({});
   return (
+    <UserContext.Provider  value={[loggedInUser, setloggedInUser]}>
+    <div className="App">
     <Router>
     <NabBar/>
-      <div className="App">
+    <p>user email {loggedInUser.email}</p>
       <Switch>
         <Route path exact = "/">
           <Home/>
@@ -30,9 +37,22 @@ function App() {
         <Route path = "/googleAuth">
           <GoogleAuth/>
         </Route>
+        <Route path = "/login">
+          <LoginForm/>
+        </Route>
+        <PrivateRoute path = "/shipment">
+          <Shipment/>
+        </PrivateRoute>
+        <Route path = "/review">
+          <Review/>
+        </Route>
+        {/* <Route path = "/shipment">
+        <Shipment/>
+        </Route> */}
       </Switch>
-      </div>
     </Router>
+    </div>
+    </UserContext.Provider>
   );
 }
 

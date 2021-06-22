@@ -29,6 +29,15 @@ const NabBar = () => {
               <li class="nav-item">
                 <a class="nav-link" href="/googleAuth">Google Authentication</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/shipment">Shipment</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/review">Review</a>
+              </li>
             </ul>
           </div>
         </div>
